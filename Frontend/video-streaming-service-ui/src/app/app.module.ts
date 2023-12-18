@@ -8,18 +8,18 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UploadVideoComponent } from './upload-video/upload-video.component';
+import { HeaderComponent } from './header/header.component'; // Correct import for HeaderComponent
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadVideoComponent,
-    HeaderComponent
+    HeaderComponent // Declare HeaderComponent here
   ],
   imports: [
     BrowserModule,
@@ -31,8 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule,
-    HeaderComponent
+    MatIconModule
   ],
   bootstrap: [AppComponent]
 })
