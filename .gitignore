@@ -1,0 +1,6 @@
+/shelf/
+/.idea/workspace.yml
+/Backend/target
+/Backend/src/test
+/Backend/src/main/resources
+/Frontend/video-streaming-service-ui/node_modules
