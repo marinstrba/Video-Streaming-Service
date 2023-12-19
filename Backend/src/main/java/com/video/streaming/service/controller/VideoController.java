@@ -1,5 +1,7 @@
 package com.video.streaming.service.controller;
 
+import com.video.streaming.service.DTO.UploadVideoResponse;
+import com.video.streaming.service.DTO.VideoDTO;
 import com.video.streaming.service.service.VideoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,11 +14,22 @@ import org.springframework.web.multipart.MultipartFile;
 public class VideoController {
 
     private final VideoService videoService;
-    @PostMapping
+    @PostMapping(value="/")
     @ResponseStatus(HttpStatus.CREATED)
-    public void uploadVideo(@RequestParam("file") MultipartFile file)
+    public UploadVideoResponse uploadVideo(@RequestParam("file") MultipartFile file)
     {
-        videoService.uploadVideo(file);
-
+        return videoService.uploadVideo(file);
+    }
+    @PostMapping(value="/thumbnail/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public String uploadThumbnail(@RequestParam("file") MultipartFile file, @RequestParam("videoId") String videoId)
+    {
+        return videoService.uploadThumbnail(file, videoId);
+    }
+    @PutMapping(value="/")
+    @ResponseStatus(HttpStatus.OK)
+    public VideoDTO editVideoMetadata(@RequestBody VideoDTO videoDTO)
+    {
+        return videoService.editVideo(videoDTO);
     }
 }
