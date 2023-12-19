@@ -4,6 +4,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipsModule } from '@angular/material/chips';
 import { ActivatedRoute } from '@angular/router';
+import { VideoService } from '../video.service';
 
 @Component({
   selector: 'app-save-video-details',
@@ -26,8 +27,8 @@ export class SaveVideoDetailsComponent implements OnInit {
 	 videoId ='';
 
 
-	   constructor(private activatedRoute: ActivatedRoute) {
-	   this.videoId = this.activatedRoute.snapshot.params.videoId;
+	   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService) {
+	   this.videoId = this.activatedRoute.snapshot.params['videoId'];
          this.saveVideoDetailsForm = new FormGroup({
      		title: this.title,
      		description: this.description,
@@ -70,7 +71,10 @@ onFileSelected(event: Event): void {
 
 onUpload()
 {
-
+	this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
+	.subscribe(data => {
+		console.log(data);
+	})
 }
 
 }
