@@ -5,10 +5,11 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipsModule } from '@angular/material/chips';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from '../video.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { VideoDTO } from '../video-dto';
 
 
 @Component({
@@ -32,14 +33,18 @@ export class SaveVideoDetailsComponent implements OnInit {
 	 videoId ='';
 	 fileSelected = false;
 	 videoUrl!: string;
+	 thumbnailUrl!: string;
 
 
 	   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
 	   private matSnackBar: MatSnackBar) {
 	   this.videoId = this.activatedRoute.snapshot.params['videoId'];
+
 	   this.videoService.getVideo(this.videoId).subscribe(data => {
 	   	this.videoUrl = data.videoUrl;
+	   	this.thumbnailUrl = data.thumbnailUrl;
 	   })
+
          this.saveVideoDetailsForm = new FormGroup({
      		title: this.title,
      		description: this.description,
@@ -90,4 +95,20 @@ onUpload()
 	})
 }
 
+saveVideo()
+{
+	const videoMetadata: VideoDTO = {
+		"id": this.videoId,
+		"title": this.saveVideoDetailsForm.get('title')?.value,
+		"description": this.saveVideoDetailsForm.get('description')?.value,
+		"tags": this.tags,
+		"videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
+		"videoUrl": this.videoUrl,
+		"thumbnailUrl": this.thumbnailUrl
+	}
+
+		this.videoService.saveVideo(videoMetadata).subscribe(data => {
+			this.matSnackBar.open("Video Metadata updated successfully!", "OK");
+		});
+}
 }

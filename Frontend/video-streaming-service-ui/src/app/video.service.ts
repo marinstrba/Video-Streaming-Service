@@ -29,9 +29,14 @@ export class VideoService {
       })
     }
 
-    getVideo(videoId: String): Observable<VideoDTO> {
+    getVideo(videoId: string): Observable<VideoDTO> {
     	return this.httpClient.get<VideoDTO>("http://localhost:8080/api/videos/" + videoId);
     }
+
+    saveVideo(videoMetadata: VideoDTO): Observable<VideoDTO> {
+		return this.httpClient.put<VideoDTO>("http://localhost:8080/api/videos/", videoMetadata);
+    }
+
 
 
 }

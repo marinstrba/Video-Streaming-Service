@@ -101,7 +101,7 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
-				"node_modules/@videogular/ngx-videogular/fonts/videogular.css",
+				"@videogular/ngx-videogular/fonts/videogular.css",
               "src/styles.css"
             ],
             "scripts": []
