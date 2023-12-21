@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { FileSystemFileEntry } from "ngx-file-drop";
 import { UploadVideoResponse } from './upload-video/UploadVideoResponse';
+import { VideoDTO } from './video-dto';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class VideoService {
       return this.httpClient.post<string>("http://localhost:8080/api/videos/thumbnail/", formData,{
       	responseType: 'text' as 'json'
       })
+    }
+
+    getVideo(videoId: String): Observable<VideoDTO> {
+    	return this.httpClient.get<VideoDTO>("http://localhost:8080/api/videos/" + videoId);
     }
 
 
