@@ -1,9 +1,13 @@
 # Vide Streaming Service
 
-This site allows user to upload his own videos and photos.  
-User can also subscribe to other users and watch their videos.  
-Videos and photos are stored in AWS S3 and authentication of the user is done trough Auth0.
-Used technologie:  
+The user of this side has sevral functionalities to his disposal  
+-> login and out of the app  
+-> upload new videos  with thumbnails  
+-> view videos  
+-> like/dislike and comment on those videos   
+...and more   
+
+## Used technologies:  
 Angular   
 SpringBoot   
 MongoDB   
