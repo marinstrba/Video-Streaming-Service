@@ -45,6 +45,24 @@ public class VideoService {
 
     }
 
+    public VideoDTO getVideoDetails(String videoId)
+    {
+        var videoDetails = getVideoById(videoId);
+        var videoDto = new VideoDTO();
+
+        videoDto.setVideoUrl(videoDetails.getVideoUrl());
+        videoDto.setThumbnailUrl(videoDetails.getThumbnailUrl());
+        videoDto.setId(videoDetails.getId());
+        videoDto.setTitle(videoDetails.getTitle());
+        videoDto.setDescription(videoDetails.getDescription());
+        videoDto.setTags(videoDetails.getTags());
+        videoDto.setVideoStatus(videoDetails.getVideoStatus());
+
+        return videoDto;
+
+    }
+
+
     private Video getVideoById(String videoId)
     {
         return videoRepository.findById(videoId)
