@@ -19,29 +19,28 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
-import {VgCoreModule} from '@videogular/ngx-videogular/core';
-import {VgControlsModule} from '@videogular/ngx-videogular/controls';
-import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
-import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
-
+import { VgCoreModule} from '@videogular/ngx-videogular/core';
+import { VgControlsModule } from '@videogular/ngx-videogular/controls';
+import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
+import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadVideoComponent,
     HeaderComponent,
-    SaveVideoDetailsComponent // Ensure HeaderComponent is declared
+    SaveVideoDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule, // Reverted to standard HttpClientModule
+    HttpClientModule,
     RouterModule.forRoot([]),
     NgxFileDropModule,
     MatButtonModule,
     BrowserAnimationsModule,
-    MatToolbarModule, // Ensure Angular Material modules are imported
+    MatToolbarModule,
     MatIconModule,
     FlexLayoutModule,
     MatFormFieldModule,
@@ -53,7 +52,8 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 	VgCoreModule,
 	VgControlsModule,
 	VgOverlayPlayModule,
-	VgBufferingModule
+	VgBufferingModule,
+
   ],
   bootstrap: [AppComponent]
 })

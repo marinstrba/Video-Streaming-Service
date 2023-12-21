@@ -5,11 +5,16 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipsModule } from '@angular/material/chips';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from '../video.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 @Component({
   selector: 'app-save-video-details',
   templateUrl: './save-video-details.component.html',
-  styleUrls: ['./save-video-details.component.css'] // Corrected to styleUrls
+  styleUrls: ['./save-video-details.component.css']
 })
 export class SaveVideoDetailsComponent implements OnInit {
 
@@ -25,9 +30,11 @@ export class SaveVideoDetailsComponent implements OnInit {
 	 selectedFile!: File;
 	 selectedFileName = '';
 	 videoId ='';
+	 fileSelected = false;
 
 
-	   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService) {
+	   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
+	   private matSnackBar: MatSnackBar) {
 	   this.videoId = this.activatedRoute.snapshot.params['videoId'];
          this.saveVideoDetailsForm = new FormGroup({
      		title: this.title,
@@ -66,6 +73,7 @@ onFileSelected(event: Event): void {
   if (input && input.files && input.files.length) {
     this.selectedFile = input.files[0];
     this.selectedFileName = this.selectedFile.name;
+    this.fileSelected = true;
   }
 }
 
@@ -74,6 +82,7 @@ onUpload()
 	this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
 	.subscribe(data => {
 		console.log(data);
+		this.matSnackBar.open("Upload successful!", "OK");
 	})
 }
 
