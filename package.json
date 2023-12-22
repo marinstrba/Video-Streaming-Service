@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@auth0/auth0-angular": "^2.2.2"
+  }
+}

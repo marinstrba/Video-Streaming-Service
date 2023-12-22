@@ -18,16 +18,13 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 public class S3Service implements FileService {
-
-    @Autowired
-    private AmazonS3 awsS3Client;
+    private final AmazonS3 awsS3Client;
     private static final String S3NAME = "com.marinstrba";
     @Override
     public String uploadFile (MultipartFile file)
     {
        var filenameExtension = StringUtils.getFilenameExtension(file.getOriginalFilename());
        var key = UUID.randomUUID().toString() + "." + filenameExtension;
-       //System.out.println(key);
        var metadata = new ObjectMetadata();
        metadata.setContentLength(file.getSize());
        metadata.setContentType(file.getContentType());

@@ -47,8 +47,8 @@ public class VideoService {
 
     public VideoDTO getVideoDetails(String videoId)
     {
-        var videoDetails = getVideoById(videoId);
-        var videoDto = new VideoDTO();
+        Video videoDetails = getVideoById(videoId);
+        VideoDTO videoDto = new VideoDTO();
 
         videoDto.setVideoUrl(videoDetails.getVideoUrl());
         videoDto.setThumbnailUrl(videoDetails.getThumbnailUrl());

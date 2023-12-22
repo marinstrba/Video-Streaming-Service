@@ -38,11 +38,12 @@ export class SaveVideoDetailsComponent implements OnInit {
 
 	   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
 	   private matSnackBar: MatSnackBar) {
+
 	   this.videoId = this.activatedRoute.snapshot.params['videoId'];
 
 	   this.videoService.getVideo(this.videoId).subscribe(data => {
-	   	this.videoUrl = data.videoUrl;
-	   	this.thumbnailUrl = data.thumbnailUrl;
+			this.videoUrl = data.videoUrl;
+			this.thumbnailUrl = data.thumbnailUrl;
 	   })
 
          this.saveVideoDetailsForm = new FormGroup({
@@ -76,39 +77,39 @@ export class SaveVideoDetailsComponent implements OnInit {
 		}
   }
 
-onFileSelected(event: Event): void {
-  const input = event.target as HTMLInputElement | null;
+	onFileSelected(event: Event): void {
+	  const input = event.target as HTMLInputElement | null;
 
-  if (input && input.files && input.files.length) {
-    this.selectedFile = input.files[0];
-    this.selectedFileName = this.selectedFile.name;
-    this.fileSelected = true;
-  }
-}
-
-onUpload()
-{
-	this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
-	.subscribe(data => {
-		console.log(data);
-		this.matSnackBar.open("Upload successful!", "OK");
-	})
-}
-
-saveVideo()
-{
-	const videoMetadata: VideoDTO = {
-		"id": this.videoId,
-		"title": this.saveVideoDetailsForm.get('title')?.value,
-		"description": this.saveVideoDetailsForm.get('description')?.value,
-		"tags": this.tags,
-		"videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
-		"videoUrl": this.videoUrl,
-		"thumbnailUrl": this.thumbnailUrl
+	  if (input && input.files && input.files.length) {
+		this.selectedFile = input.files[0];
+		this.selectedFileName = this.selectedFile.name;
+		this.fileSelected = true;
+	  }
 	}
 
-		this.videoService.saveVideo(videoMetadata).subscribe(data => {
-			this.matSnackBar.open("Video Metadata updated successfully!", "OK");
-		});
-}
+	onUpload()
+	{
+		this.videoService.uploadThumbnail(this.selectedFile, this.videoId)
+		.subscribe(data => {
+			console.log(data);
+			this.matSnackBar.open("Upload successful!", "OK");
+		})
+	}
+
+	saveVideo()
+	{
+		const videoMetadata: VideoDTO = {
+			"id": this.videoId,
+			"title": this.saveVideoDetailsForm.get('title')?.value,
+			"description": this.saveVideoDetailsForm.get('description')?.value,
+			"tags": this.tags,
+			"videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
+			"videoUrl": this.videoUrl,
+			"thumbnailUrl": this.thumbnailUrl
+		}
+
+			this.videoService.saveVideo(videoMetadata).subscribe(data => {
+				this.matSnackBar.open("Video Metadata updated successfully!", "OK");
+			});
+	}
 }
