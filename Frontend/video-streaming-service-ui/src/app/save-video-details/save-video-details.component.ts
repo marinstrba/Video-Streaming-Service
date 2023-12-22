@@ -19,21 +19,21 @@ import { VideoDTO } from '../video-dto';
 })
 export class SaveVideoDetailsComponent implements OnInit {
 
-  saveVideoDetailsForm: FormGroup;
-  title: FormControl = new FormControl('');
-  description: FormControl = new FormControl('');
-  videoStatus: FormControl = new FormControl('');
-	 selectable = true;
-	 removable = true;
-	 addOnBlur = true;
-	 readonly separatorKeysCodes = [ENTER, COMMA] as const;
-	 tags: string[] = [];
-	 selectedFile!: File;
-	 selectedFileName = '';
-	 videoId ='';
-	 fileSelected = false;
-	 videoUrl!: string;
-	 thumbnailUrl!: string;
+  	saveVideoDetailsForm: FormGroup;
+  	title: FormControl = new FormControl('');
+  	description: FormControl = new FormControl('');
+  	videoStatus: FormControl = new FormControl('');
+	selectable = true;
+	removable = true;
+	addOnBlur = true;
+	readonly separatorKeysCodes = [ENTER, COMMA] as const;
+	tags: string[] = [];
+	selectedFile!: File;
+	selectedFileName:string  = '';
+	videoId:string = '';
+	fileSelected = false;
+	videoUrl!: string;
+	thumbnailUrl!: string;
 
 
 	   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
@@ -43,6 +43,7 @@ export class SaveVideoDetailsComponent implements OnInit {
 
 	   this.videoService.getVideo(this.videoId).subscribe(data => {
 			this.videoUrl = data.videoUrl;
+			//console.log("WATEFAK " + this.videoUrl);
 			this.thumbnailUrl = data.thumbnailUrl;
 	   })
 
