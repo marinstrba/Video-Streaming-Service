@@ -15,7 +15,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
     private String issuer;
     @Value("${auth0.audience}")
-    private String audience;
+    private final String audience;
+
+    public SecurityConfig(String audience) {
+        this.audience = audience;
+        this.issuer = issuer;
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
