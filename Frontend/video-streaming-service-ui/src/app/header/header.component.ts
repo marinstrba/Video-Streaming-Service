@@ -18,4 +18,14 @@ export class HeaderComponent implements OnInit {
 								this.isAuthenticated = isAuthenticated;
 							})
 	}
+
+	login(){
+		this.oidcSecurityService.authorize();
+	}
+
+	logout() {
+        this.oidcSecurityService
+          .logoff()
+          .subscribe((result) => console.log(result));
+      }
 }
