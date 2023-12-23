@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; // Standard import
+import { HttpClientModule, HttpClient } from '@angular/common/http'; // Standard import
 import { RouterModule } from '@angular/router';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +26,7 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { AuthConfigModule } from './auth/auth-config.module';
+import { withFetch } from '@angular/common/http/fetch';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { AuthConfigModule } from './auth/auth-config.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule.withFetch(),
     RouterModule.forRoot([]),
     NgxFileDropModule,
     MatButtonModule,
@@ -58,7 +59,7 @@ import { AuthConfigModule } from './auth/auth-config.module';
 	VgControlsModule,
 	VgOverlayPlayModule,
 	VgBufferingModule,
- AuthConfigModule,
+ 	AuthConfigModule,
 
   ],
   bootstrap: [AppComponent]
