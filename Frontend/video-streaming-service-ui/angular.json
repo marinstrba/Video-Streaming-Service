@@ -25,7 +25,7 @@
           "options": {
             "outputPath": "dist/video-streaming-service-ui",
             "index": "src/index.html",
-            "browser": "src/main.ts",
+			  "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],

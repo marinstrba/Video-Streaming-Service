@@ -25,6 +25,7 @@ import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
+import { AuthConfigModule } from './auth/auth-config.module';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { VideoDetailComponent } from './video-detail/video-detail.component';
 	VgControlsModule,
 	VgOverlayPlayModule,
 	VgBufferingModule,
+ AuthConfigModule,
 
   ],
   bootstrap: [AppComponent]
