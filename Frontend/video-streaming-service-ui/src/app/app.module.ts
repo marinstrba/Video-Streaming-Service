@@ -26,6 +26,8 @@ import { VgBufferingModule } from '@videogular/ngx-videogular/buffering';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { AuthConfigModule } from './auth/auth-config.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from 'angular-auth-oidc-client';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,9 @@ import { AuthConfigModule } from './auth/auth-config.module';
 	VgBufferingModule,
  	AuthConfigModule,
 
+  ],
+  providers: [
+  {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

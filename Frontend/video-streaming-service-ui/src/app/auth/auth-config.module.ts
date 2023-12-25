@@ -12,7 +12,11 @@ import { AuthModule } from 'angular-auth-oidc-client';
             responseType: 'code',
             silentRenew: true,
             useRefreshToken: true,
-        } 
+            secureRoutes: ['http://localhost:8080'],
+            customParamsAuthRequest: {
+            	audience: 'http://localhost:8080'
+            }
+        }
       })],
     exports: [AuthModule],
 })
