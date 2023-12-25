@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class VideoService {
     private final S3Service s3Service;
     private final VideoRepository videoRepository;
+    private final UserService userService;
     public UploadVideoResponse uploadVideo(MultipartFile multipartFile) {
         String videoUrl = s3Service.uploadFile(multipartFile);
         var video = new Video();
@@ -63,9 +64,45 @@ public class VideoService {
     }
 
     public VideoDTO likeVideo(String videoId) {
+        //Get Video by ID
         Video likedVideo = getVideoById(videoId);
+        VideoDTO videoDTO = new VideoDTO();
+
+        // Increment like count
+        // If user already liked the video, then decrement like count
+        // like - 0, dislike - 0
+        // like - 1, dislike - 0
+        // like - 0, dislike - 0
+        // like - 0, dislike - 1
+        // like - 1, dislike - 0
+
+        // If user already dislikes the video, then increment like count and decrement dislike count
+        if (userService.ifLikedVideo(videoId)){
+            likedVideo.decrementLikes();
+            userService.removeFromLikedVideos(videoId);
+        } else if (userService.ifDisLikedVideo(videoId))
+        {
+            likedVideo.decrementDisLikes();
+            userService.removeFromDisLikedVideos(videoId);
+            likedVideo.incrementLikes();
+            userService.addToLikedVideos(videoId);
+        } else {
+            likedVideo.incrementLikes();
+            userService.addToLikedVideos(videoId);
+        }
 
 
+        videoDTO.setVideoUrl(likedVideo.getVideoUrl());
+        videoDTO.setThumbnailUrl(likedVideo.getThumbnailUrl());
+        videoDTO.setId(likedVideo.getId());
+        videoDTO.setTitle(likedVideo.getTitle());
+        videoDTO.setDescription(likedVideo.getDescription());
+        videoDTO.setTags(likedVideo.getTags());
+        videoDTO.setVideoStatus(likedVideo.getVideoStatus());
+        videoDTO.setLikeCount(likedVideo.getLikes().get());
+        videoDTO.setLikeCount(likedVideo.getDisLikes().get());
+
+        return videoDTO;
     }
 
 
