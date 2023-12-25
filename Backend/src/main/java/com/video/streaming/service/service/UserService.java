@@ -1,5 +1,6 @@
 package com.video.streaming.service.service;
 
+import com.video.streaming.service.model.Video;
 import com.video.streaming.service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,6 +29,12 @@ public class UserService {
         userRepository.save(currentUser);
     }
 
+    public void addToDisLikedVideos(String videoId) {
+        User currentUser = getCurrentUser();
+        currentUser.addToDisLikedVideos(videoId);
+        userRepository.save(currentUser);
+    }
+
     public boolean ifLikedVideo(String videoId) {
         return getCurrentUser().getLikedVideos().stream().anyMatch(id -> id.equals(videoId));
     }
@@ -45,6 +52,12 @@ public class UserService {
     public void removeFromDisLikedVideos(String videoId) {
         User currentUser = getCurrentUser();
         currentUser.removeFromDisLikedVideos(videoId);
+        userRepository.save(currentUser);
+    }
+
+    public void addVideoToHistory(Video videoDetails) {
+        var currentUser = getCurrentUser();
+        currentUser.addToVideoHistory(videoDetails.getId());
         userRepository.save(currentUser);
     }
 }
