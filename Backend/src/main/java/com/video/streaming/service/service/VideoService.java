@@ -62,6 +62,12 @@ public class VideoService {
 
     }
 
+    public VideoDTO likeVideo(String videoId) {
+        Video likedVideo = getVideoById(videoId);
+
+
+    }
+
 
     private Video getVideoById(String videoId)
     {

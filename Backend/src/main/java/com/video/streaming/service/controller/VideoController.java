@@ -39,4 +39,9 @@ public class VideoController {
     {
         return videoService.getVideoDetails(videoId);
     }
+
+    @PostMapping(value = "/{videoId}/like")
+    public VideoDTO likeVideo(@PathVariable String videoId){
+        return videoService.likeVideo(videoId);
+    }
 }

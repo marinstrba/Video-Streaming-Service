@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 @Document(value = "Video")
@@ -24,12 +25,28 @@ public class Video {
     private String title;
     private String description;
     private String userId;
-    private Integer likes;
-    private Integer disLikes;
+    private AtomicInteger likes;
+    private AtomicInteger disLikes;
     private Set<String> tags;
     private String videoUrl;
     private VideoStatus videoStatus;
     private Integer viewCount;
     private String thumbnailUrl;
     private List<Comment> commentList;
+
+    public void incrementLikes() {
+        likes.incrementAndGet();
+    }
+
+    public void decrementLikes() {
+        likes.decrementAndGet();
+    }
+
+    public void incrementDisLikes() {
+        disLikes.incrementAndGet();
+    }
+
+    public void decrementDisLikes(){
+        disLikes.decrementAndGet();
+    }
 }
