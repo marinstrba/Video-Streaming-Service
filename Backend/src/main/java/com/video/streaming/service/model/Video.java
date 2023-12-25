@@ -25,8 +25,8 @@ public class Video {
     private String title;
     private String description;
     private String userId;
-    private AtomicInteger likes;
-    private AtomicInteger disLikes;
+    private AtomicInteger likes = new AtomicInteger(0);
+    private AtomicInteger disLikes = new AtomicInteger(0);
     private Set<String> tags;
     private String videoUrl;
     private VideoStatus videoStatus;
@@ -38,15 +38,19 @@ public class Video {
         likes.incrementAndGet();
     }
 
+
     public void decrementLikes() {
-        likes.decrementAndGet();
+        if (likes.get() > 0) {
+            likes.decrementAndGet();
+        }
     }
 
     public void incrementDisLikes() {
         disLikes.incrementAndGet();
     }
 
-    public void decrementDisLikes(){
-        disLikes.decrementAndGet();
-    }
-}
+    public void decrementDisLikes() {
+        if (disLikes.get() > 0) {
+            disLikes.decrementAndGet();
+        }
+    }}

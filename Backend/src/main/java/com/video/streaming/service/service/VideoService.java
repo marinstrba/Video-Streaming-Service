@@ -77,11 +77,11 @@ public class VideoService {
         // like - 1, dislike - 0
 
         // If user already dislikes the video, then increment like count and decrement dislike count
+
         if (userService.ifLikedVideo(videoId)){
             likedVideo.decrementLikes();
             userService.removeFromLikedVideos(videoId);
-        } else if (userService.ifDisLikedVideo(videoId))
-        {
+        } else if (userService.ifDisLikedVideo(videoId)) {
             likedVideo.decrementDisLikes();
             userService.removeFromDisLikedVideos(videoId);
             likedVideo.incrementLikes();
@@ -91,6 +91,7 @@ public class VideoService {
             userService.addToLikedVideos(videoId);
         }
 
+        videoRepository.save(likedVideo);
 
         videoDTO.setVideoUrl(likedVideo.getVideoUrl());
         videoDTO.setThumbnailUrl(likedVideo.getThumbnailUrl());
@@ -100,16 +101,14 @@ public class VideoService {
         videoDTO.setTags(likedVideo.getTags());
         videoDTO.setVideoStatus(likedVideo.getVideoStatus());
         videoDTO.setLikeCount(likedVideo.getLikes().get());
-        videoDTO.setLikeCount(likedVideo.getDisLikes().get());
+        videoDTO.setDisLikeCount(likedVideo.getDisLikes().get());
 
         return videoDTO;
     }
-
 
     private Video getVideoById(String videoId)
     {
         return videoRepository.findById(videoId)
                 .orElseThrow(() -> new IllegalArgumentException("Cannot find video by Id."));
-
     }
 }

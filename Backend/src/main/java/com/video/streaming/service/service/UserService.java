@@ -29,12 +29,11 @@ public class UserService {
     }
 
     public boolean ifLikedVideo(String videoId) {
-        return getCurrentUser().getLikedVideos().stream()
-                                    .anyMatch(likedVideo -> likedVideo.equals(videoId));
+        return getCurrentUser().getLikedVideos().stream().anyMatch(id -> id.equals(videoId));
     }
+
     public boolean ifDisLikedVideo(String videoId) {
-        return getCurrentUser().getLikedVideos().stream()
-                                    .anyMatch(disLikedVideo -> disLikedVideo.equals(videoId));
+        return getCurrentUser().getDisLikedVideos().stream().anyMatch(id -> id.equals(videoId));
     }
 
     public void removeFromLikedVideos(String videoId) {

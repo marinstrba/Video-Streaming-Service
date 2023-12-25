@@ -29,7 +29,7 @@ public class User {
     private Set<String> subscribers;
     private List<String> videoHistory;
     private Set<String> likedVideos = ConcurrentHashMap.newKeySet();
-    private Set<String> disLikedVideosStrings = ConcurrentHashMap.newKeySet();
+    private Set<String> disLikedVideos = ConcurrentHashMap.newKeySet();
 
     public void addToLikeVideo(String videoId) {
         likedVideos.add(videoId);
@@ -38,8 +38,11 @@ public class User {
     public void removeFromLikedVideos(String videoId){
         likedVideos.remove(videoId);
     }
+    public void addToDisLikedVideos(String videoId){
+        disLikedVideos.add(videoId);
+    }
 
     public void removeFromDisLikedVideos(String videoId){
-        disLikedVideosStrings.remove(videoId);
+        disLikedVideos.remove(videoId);
     }
 }
