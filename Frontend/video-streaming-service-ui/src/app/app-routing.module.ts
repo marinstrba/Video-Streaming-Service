@@ -15,7 +15,7 @@ const routes: Routes = [
   path: '', component: HomeComponent,
   children: [
   {
-    path:'featured', component: FeaturedComponent,
+    path:'feature', component: FeaturedComponent,
   },
   {
     path: 'subscriptions', component: SubscriptionsComponent,

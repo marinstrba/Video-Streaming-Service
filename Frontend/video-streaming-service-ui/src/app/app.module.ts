@@ -37,7 +37,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatListModule } from "@angular/material/list";
 import { FeaturedComponent } from './featured/featured.component';
 import { VideoCardComponent } from './video-card/video-card.component';
-
+import { MatCardModule } from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -79,7 +79,8 @@ import { VideoCardComponent } from './video-card/video-card.component';
 	VgBufferingModule,
  	AuthConfigModule,
  	MatSidenavModule,
- 	MatListModule
+ 	MatListModule,
+ 	MatCardModule
 
   ],
   providers: [
