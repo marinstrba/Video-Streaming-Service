@@ -106,7 +106,10 @@ export class SaveVideoDetailsComponent implements OnInit {
 			"tags": this.tags,
 			"videoStatus": this.saveVideoDetailsForm.get('videoStatus')?.value,
 			"videoUrl": this.videoUrl,
-			"thumbnailUrl": this.thumbnailUrl
+			"thumbnailUrl": this.thumbnailUrl,
+			"likeCount": 0,
+			"disLikeCount": 0,
+			"viewCount": 0
 		}
 
 			this.videoService.saveVideo(videoMetadata).subscribe(data => {

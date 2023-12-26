@@ -6,3 +6,11 @@
 .mat-title {
 	font-weight: bold;
 }
+
+.seperator{
+	border-radius: 50%;
+	width: 5px;
+	height: 5px;
+	background-color: black;
+	display: inline-block;
+}

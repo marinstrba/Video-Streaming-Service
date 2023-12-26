@@ -15,6 +15,9 @@ export class VideoDetailComponent {
 	videoDescription!: string;
 	tags: Array<string> = [];
 	videoAvailable: boolean = false;
+	likeCount: number = 0;
+	disLikeCount: number = 0;
+	viewCount: number = 0;
 
 
 	constructor(private activatedRoute: ActivatedRoute,
@@ -26,6 +29,9 @@ export class VideoDetailComponent {
 			this.videoDescription = data.description;
 			this.tags = data.tags;
 			this.videoAvailable = true;
+			this.likeCount = data.likeCount;
+			this.disLikeCount = data.disLikeCount;
+			this.viewCount = data.viewCount;
 	   })
 
 	}
