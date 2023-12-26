@@ -8,6 +8,8 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import com.video.streaming.service.model.User;
 
+import java.util.Set;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -59,5 +61,38 @@ public class UserService {
         var currentUser = getCurrentUser();
         currentUser.addToVideoHistory(videoDetails.getId());
         userRepository.save(currentUser);
+    }
+
+    public void subscribeUser(String userId) {
+        var currentUser = getCurrentUser();
+        currentUser.addToSubscribedToUsers(userId);
+
+        var user = getUserById(userId);
+        user.addToSubscribers(currentUser.getId());
+
+        userRepository.save(currentUser);
+        userRepository.save(user);
+    }
+
+    public void unSubscribeUser(String userId) {
+        var currentUser = getCurrentUser();
+        currentUser.removeFromSubscribedToUsers(userId);
+
+        var user = getUserById(userId);
+        user.removeFromSubscribers(currentUser.getId());
+
+        userRepository.save(currentUser);
+        userRepository.save(user);
+    }
+
+    public Set<String> userHistory(String userId) {
+        var user = getUserById(userId);
+        return user.getVideoHistory();
+
+    }
+
+    private User getUserById(String userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("Cannot find user with id" + userId));
     }
 }

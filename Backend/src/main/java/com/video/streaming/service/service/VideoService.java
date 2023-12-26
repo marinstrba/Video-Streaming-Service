@@ -1,12 +1,17 @@
 package com.video.streaming.service.service;
 
+import com.video.streaming.service.DTO.CommentDTO;
 import com.video.streaming.service.DTO.UploadVideoResponse;
 import com.video.streaming.service.DTO.VideoDTO;
+import com.video.streaming.service.model.Comment;
 import com.video.streaming.service.model.Video;
 import com.video.streaming.service.repository.VideoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -54,9 +59,7 @@ public class VideoService {
         increaseVideoCount(videoDetails);
         userService.addVideoToHistory(videoDetails);
 
-        mapToVideoDTO(videoDto, videoDetails);
-
-        return videoDto;
+        return mapToVideoDTO(videoDetails);
 
     }
 
@@ -69,16 +72,6 @@ public class VideoService {
         //Get Video by ID
         Video likedVideo = getVideoById(videoId);
         VideoDTO videoDTO = new VideoDTO();
-
-        // Increment like count
-        // If user already liked the video, then decrement like count
-        // like - 0, dislike - 0
-        // like - 1, dislike - 0
-        // like - 0, dislike - 0
-        // like - 0, dislike - 1
-        // like - 1, dislike - 0
-
-        // If user already dislikes the video, then increment like count and decrement dislike count
 
         if (userService.ifLikedVideo(videoId)){
             likedVideo.decrementLikes();
@@ -95,27 +88,14 @@ public class VideoService {
 
         videoRepository.save(likedVideo);
 
-        mapToVideoDTO(videoDTO, likedVideo);
+        return mapToVideoDTO(likedVideo);
 
-
-        return videoDTO;
     }
 
     public VideoDTO disLikeVideo(String videoId) {
 
         //Get Video by ID
         Video likedVideo = getVideoById(videoId);
-        VideoDTO videoDTO = new VideoDTO();
-
-        // Increment like count
-        // If user already liked the video, then decrement like count
-        // like - 0, dislike - 0
-        // like - 1, dislike - 0
-        // like - 0, dislike - 0
-        // like - 0, dislike - 1
-        // like - 1, dislike - 0
-
-        // If user already dislikes the video, then increment like count and decrement dislike count
 
         if (userService.ifDisLikedVideo(videoId)){
             likedVideo.decrementDisLikes();
@@ -132,27 +112,59 @@ public class VideoService {
 
         videoRepository.save(likedVideo);
 
-        mapToVideoDTO(videoDTO, likedVideo);
+        return mapToVideoDTO(likedVideo);
 
-        return videoDTO;
     }
 
-    private static void mapToVideoDTO(VideoDTO videoDTO, Video likedVideo) {
-        videoDTO.setVideoUrl(likedVideo.getVideoUrl());
-        videoDTO.setThumbnailUrl(likedVideo.getThumbnailUrl());
-        videoDTO.setId(likedVideo.getId());
-        videoDTO.setTitle(likedVideo.getTitle());
-        videoDTO.setDescription(likedVideo.getDescription());
-        videoDTO.setTags(likedVideo.getTags());
-        videoDTO.setVideoStatus(likedVideo.getVideoStatus());
-        videoDTO.setLikeCount(likedVideo.getLikes().get());
-        videoDTO.setDisLikeCount(likedVideo.getDisLikes().get());
-        videoDTO.setViewCount(likedVideo.getViewCount().get());
+    private static VideoDTO mapToVideoDTO(Video videoById) {
+        VideoDTO videoDTO = new VideoDTO();
+
+        videoDTO.setVideoUrl(videoById.getVideoUrl());
+        videoDTO.setThumbnailUrl(videoById.getThumbnailUrl());
+        videoDTO.setId(videoById.getId());
+        videoDTO.setTitle(videoById.getTitle());
+        videoDTO.setDescription(videoById.getDescription());
+        videoDTO.setTags(videoById.getTags());
+        videoDTO.setVideoStatus(videoById.getVideoStatus());
+        videoDTO.setLikeCount(videoById.getLikes().get());
+        videoDTO.setDisLikeCount(videoById.getDisLikes().get());
+        videoDTO.setViewCount(videoById.getViewCount().get());
+
+        return videoDTO;
     }
 
     private Video getVideoById(String videoId)
     {
         return videoRepository.findById(videoId)
                 .orElseThrow(() -> new IllegalArgumentException("Cannot find video by Id."));
+    }
+
+    public void addComment(String videoId, CommentDTO commentDTO) {
+        var video = getVideoById(videoId);
+        Comment comment = new Comment();
+        comment.setText(commentDTO.getCommentText());
+        comment.setAuthorId(commentDTO.getAuthorId());
+        video.addComment(comment);
+        videoRepository.save(video);
+    }
+
+    public List<CommentDTO> getAllComments(String videoId) {
+        var video = getVideoById(videoId);
+        List<Comment> commentList = video.getCommentList();
+
+        return commentList.stream()
+                .map(this::mapToCommentDto)
+                .toList();
+    }
+
+    private CommentDTO mapToCommentDto(Comment comment) {
+        var commentDTO = new CommentDTO();
+        commentDTO.setCommentText(comment.getText());
+        commentDTO.setAuthorId(comment.getAuthorId());
+        return commentDTO;
+    }
+
+    public List<VideoDTO> getAllVideos() {
+        return videoRepository.findAll().stream().map(video -> mapToVideoDTO(video)).toList();
     }
 }
