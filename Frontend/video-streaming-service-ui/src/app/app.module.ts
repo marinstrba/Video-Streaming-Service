@@ -33,6 +33,11 @@ import { HistoryComponent } from './history/history.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { LikedVideosComponent } from './liked-videos/liked-videos.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { FeaturedComponent } from './featured/featured.component';
+import { VideoCardComponent } from './video-card/video-card.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +51,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HistoryComponent,
     SubscriptionsComponent,
     LikedVideosComponent,
-    SidebarComponent
+    SidebarComponent,
+    FeaturedComponent,
+    VideoCardComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +78,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 	VgOverlayPlayModule,
 	VgBufferingModule,
  	AuthConfigModule,
+ 	MatSidenavModule,
+ 	MatListModule
 
   ],
   providers: [
