@@ -21,19 +21,17 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public String register(Authentication authentication){
         Jwt jwt = (Jwt)authentication.getPrincipal();
-
-        userRegistrationService.registerUser(jwt.getTokenValue());
-        return "User registration was successful";
+        return userRegistrationService.registerUser(jwt.getTokenValue());
     }
 
-    @PostMapping(value = "subscribe/{userId}")
+    @PostMapping(value = "/subscribe/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public boolean subscribeUser(@PathVariable String userId){
         userService.subscribeUser(userId);
         return true;
     }
 
-    @PostMapping(value = "unsubscribe/{userId}")
+    @PostMapping(value = "/unsubscribe/{userId}")
     @ResponseStatus(HttpStatus.OK)
     public boolean unSubscribeUser(@PathVariable String userId){
         userService.unSubscribeUser(userId);

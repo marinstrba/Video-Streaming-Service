@@ -39,6 +39,7 @@ import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
 import { VideoCardComponent } from './video-card/video-card.component';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
+import { CallbackComponent } from './callback/callback.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { VideoPlayerComponent } from './video-player/video-player.component';
 	UploadVideoComponent,
 	VideoCardComponent,
 	VideoDetailComponent,
-	VideoPlayerComponent
+	VideoPlayerComponent,
+ CallbackComponent
   ],
   imports: [
      AppRoutingModule,
