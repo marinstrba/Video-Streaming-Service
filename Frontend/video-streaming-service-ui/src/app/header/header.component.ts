@@ -27,5 +27,6 @@ export class HeaderComponent implements OnInit {
         this.oidcSecurityService
           .logoff()
           .subscribe((result) => console.log(result));
+          this.oidcSecurityService.logoffLocal();
       }
 }

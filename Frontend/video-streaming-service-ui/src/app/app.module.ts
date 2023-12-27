@@ -22,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -75,6 +76,7 @@ import { CommentsComponent } from './comments/comments.component';
      MatIconModule,
      MatInputModule,
      MatListModule,
+     MatMenuModule,
      MatOptionModule,
      MatSelectModule,
      MatSidenavModule,
