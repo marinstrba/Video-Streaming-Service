@@ -83,7 +83,9 @@
 	<!-- Third div -->
 
 	<div fxFlex="30%">
-		<app-video-player [videoUrl]="videoUrl" ></app-video-player>
+		<div *ngIf="videoUrl">
+			<app-video-player [videoUrl]="videoUrl"></app-video-player>
+		</div>
 	</div>
 
 	<!-- Fourth div -->

@@ -71,10 +71,16 @@ public class VideoService {
 
     }
 
+    /**
+     * Retrieves Video DTO
+     *
+     * @param videoId The ID of a video to be retrieved
+     * @return Data Transfer Object of a video
+     */
+
     public VideoDTO getVideoDetails(String videoId)
     {
         Video videoDetails = getVideoById(videoId);
-        VideoDTO videoDto = new VideoDTO();
 
         increaseVideoCount(videoDetails);
         userService.addVideoToHistory(videoDetails);
@@ -91,7 +97,6 @@ public class VideoService {
     public VideoDTO likeVideo(String videoId) {
         //Get Video by ID
         Video likedVideo = getVideoById(videoId);
-        VideoDTO videoDTO = new VideoDTO();
 
         if (userService.ifLikedVideo(videoId)){
             likedVideo.decrementLikes();
@@ -185,6 +190,6 @@ public class VideoService {
     }
 
     public List<VideoDTO> getAllVideos() {
-        return videoRepository.findAll().stream().map(video -> mapToVideoDTO(video)).toList();
+        return videoRepository.findAll().stream().map(VideoService::mapToVideoDTO).toList();
     }
 }
