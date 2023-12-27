@@ -1,25 +1,46 @@
 <div fxLayout="row">
 	<div fxFlex="65%" class="video-detail">
-		<app-video-player *ngIf="videoAvailable" [videoUrl]="videoUrl" ></app-video-player>
-
-		<div class="mat-title">{{videoTitle}}</div>
-		<div fxLayout="row">
-			<div fxFlex="50%">
-				<span>{{viewCount}} Views</span>
-				<span class="seperator"></span>
-				<span>3rd Feb 2022</span>
-				<div>{{videoDescription}}</div>
+		<div fxLayout="column" fxLayoutGap="8px">
+			<app-video-player *ngIf="videoAvailable" [videoUrl]="videoUrl"></app-video-player>
+			<div class="mat-title">{{videoTitle}}</div>
+			<div fxLayout="row">
+				<div fxFlex="50%">
+					<span class="view-count">{{viewCount}} Views</span>
+					<span class="dot"></span>
+					<span class="video-upload-date">Apr 13, 2021</span>
+				</div>
+				<div fxFlex="50%" fxLayoutAlign="end">
+          <span class="like-dislike-section">
+              <button mat-icon-button class="thumbs-up">
+                <mat-icon>thumb_up_off_alt</mat-icon>
+                {{likeCount}}
+              </button>
+              <button mat-icon-button class="thumbs-down">
+                <mat-icon>thumb_down_off_alt</mat-icon>
+                {{disLikeCount}}
+              </button>
+          </span>
+				</div>
 			</div>
-			<div fxFlex="50%">
-
-			</div>
-
+			<mat-divider></mat-divider>
+			<mat-card-header>
+				<mat-card-title>Programming Techie</mat-card-title>
+				<mat-card-subtitle class="subtitles">4.2K Subscribers</mat-card-subtitle>
+				<button class="subscribe-button" mat-raised-button color="warn">SUBSCRIBE</button>
+				<button class="subscribe-button-clicked" mat-raised-button color="accent">
+					SUBSCRIBED
+				</button>
+			</mat-card-header>
+			<div>{{videoDescription}}</div>
+			<mat-divider></mat-divider>
+			<mat-chip-grid>
+				<mat-chip>Spring Boot</mat-chip>
+				<mat-chip>Angular</mat-chip>
+			</mat-chip-grid>
+			<mat-divider></mat-divider>
 		</div>
 	</div>
-
 	<div fxFlex="5%"></div>
-
-	<div fxFlex="30%">
-		Suggestions bar
+	<div fxFlex="30%" class="suggestion-bar">
 	</div>
 </div>
