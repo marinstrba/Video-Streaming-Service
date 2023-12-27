@@ -11,12 +11,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+
+/**
+ * REST controller for handling video related requests.
+ */
 @RestController
 @RequestMapping("/api/videos/")
 @RequiredArgsConstructor
 public class VideoController {
 
     private final VideoService videoService;
+
     @PostMapping(value="/")
     @ResponseStatus(HttpStatus.CREATED)
     public UploadVideoResponse uploadVideo(@RequestParam("file") MultipartFile file)

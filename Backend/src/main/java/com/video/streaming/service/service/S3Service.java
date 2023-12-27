@@ -20,6 +20,15 @@ import java.util.UUID;
 public class S3Service implements FileService {
     private final AmazonS3 awsS3Client;
     private static final String S3NAME = "com.marinstrba";
+
+    /**
+     * This function uploads the file to the cloud.
+     * It specifies the name of the bucket. Creates a key. And provides additional
+     * metadata of the uploaded video.
+     *
+     * @param file File to upload to the AWSs3 bucket.
+     * @return String which is the URL of the video.
+     */
     @Override
     public String uploadFile (MultipartFile file)
     {
@@ -34,7 +43,7 @@ public class S3Service implements FileService {
        } catch (IOException ioException)
        {
            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
-                   "An exception occurred while uploading the file.");
+                   "An exception occurred while uploading the file." + ioException);
        }
 
        awsS3Client.setObjectAcl(S3NAME, key, CannedAccessControlList.PublicRead);

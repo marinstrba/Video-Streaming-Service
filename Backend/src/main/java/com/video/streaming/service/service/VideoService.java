@@ -9,9 +9,7 @@ import com.video.streaming.service.repository.VideoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -19,14 +17,28 @@ public class VideoService {
     private final S3Service s3Service;
     private final VideoRepository videoRepository;
     private final UserService userService;
+
+    /**
+     * Uploads a video file to S3 storage and saves its metadata in a repository.
+     *
+     * @param multipartFile The video file to be uploaded.
+     * @return UploadVideoResponse containing the ID and URL of the saved video.
+     */
     public UploadVideoResponse uploadVideo(MultipartFile multipartFile) {
         String videoUrl = s3Service.uploadFile(multipartFile);
         var video = new Video();
         video.setVideoUrl(videoUrl);
-
         var savedVideo = videoRepository.save(video);
         return new UploadVideoResponse(savedVideo.getId(), savedVideo.getVideoUrl());
     }
+
+    /**
+     * Uploads a thumbnail for a video and saves its metadata in a repository.
+     *
+     * @param multipartFile The picture to be uploaded.
+     * @param videoId The ID of the video.
+     * @return String which contains URL of the thumbnail image.
+     */
 
     public String uploadThumbnail(MultipartFile multipartFile, String videoId) {
         var videoThumbnail = getVideoById(videoId);
