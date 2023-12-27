@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipsModule } from '@angular/material/chips';
-import { ActivatedRoute } from '@angular/router';
-import { VideoService } from '../video.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { VideoDTO } from '../video-dto';
+    import { ActivatedRoute } from '@angular/router';
+    import { COMMA, ENTER } from '@angular/cdk/keycodes';
+    import { Component } from '@angular/core';
+    import { FormControl, FormGroup } from '@angular/forms';
+    import { MatButtonModule } from '@angular/material/button';
+    import { MatChipInputEvent } from '@angular/material/chips';
+    import { MatChipsModule } from '@angular/material/chips';
+    import { MatFormFieldModule } from '@angular/material/form-field';
+    import { MatInputModule } from '@angular/material/input';
+    import { MatSnackBar } from '@angular/material/snack-bar';
+    import { VideoDTO } from '../video-dto';
+    import { VideoService } from '../video.service';
 
 
 @Component({
@@ -17,35 +17,43 @@ import { VideoDTO } from '../video-dto';
   templateUrl: './save-video-details.component.html',
   styleUrls: ['./save-video-details.component.css']
 })
-export class SaveVideoDetailsComponent implements OnInit {
+export class SaveVideoDetailsComponent {
 
-  	saveVideoDetailsForm: FormGroup;
-  	title: FormControl = new FormControl('');
-  	description: FormControl = new FormControl('');
-  	videoStatus: FormControl = new FormControl('');
-	selectable = true;
-	removable = true;
-	addOnBlur = true;
-	readonly separatorKeysCodes = [ENTER, COMMA] as const;
-	tags: string[] = [];
-	selectedFile!: File;
-	selectedFileName:string  = '';
-	videoId:string = '';
-	fileSelected = false;
-	videoUrl!: string;
-	thumbnailUrl!: string;
+	// Class field variables
 
+		saveVideoDetailsForm: FormGroup;
+		title: FormControl = new FormControl('');
+		description: FormControl = new FormControl('');
+		videoStatus: FormControl = new FormControl('');
+		selectable = true;
+		removable = true;
+		addOnBlur = true;
+		readonly separatorKeysCodes = [ENTER, COMMA] as const;
+		tags: string[] = [];
+		selectedFile!: File;
+		selectedFileName:string  = '';
+		videoId:string = '';
+		fileSelected = false;
+		videoUrl!: string;
+		thumbnailUrl!: string;
+
+		// Assigning variables in constructor and injecting dependencies
 
 	   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
 	   private matSnackBar: MatSnackBar) {
 
+	   // Getting the videoId from URL
+
 	   this.videoId = this.activatedRoute.snapshot.params['videoId'];
+
+	   // Fetching video data
 
 	   this.videoService.getVideo(this.videoId).subscribe(data => {
 			this.videoUrl = data.videoUrl;
-			//console.log("WATEFAK " + this.videoUrl);
 			this.thumbnailUrl = data.thumbnailUrl;
 	   })
+
+	   // Creating form group
 
          this.saveVideoDetailsForm = new FormGroup({
      		title: this.title,
@@ -54,29 +62,25 @@ export class SaveVideoDetailsComponent implements OnInit {
          })
        }
 
-       ngOnInit(): void {}
-
+	// Part of MatChipsModule adding inputs in the final array
 	add(event: MatChipInputEvent): void {
       const input = event.input;
       const value = (event.value || '').trim();
 
-      if (value) {
+      if (value)
         this.tags.push(value);
-      }
 
       // Reset the input value
-      if (input) {
+      if (input)
         input.value = '';
-      }
     }
 
+	// Removing them
 	 remove(value: string): void {
 		const index = this.tags.indexOf(value);
-
-		if (index >= 0) {
+		if (index >= 0)
 			this.tags.splice(index, 1);
-		}
-  }
+  	}
 
 	onFileSelected(event: Event): void {
 	  const input = event.target as HTMLInputElement | null;

@@ -1,4 +1,4 @@
-<div fxLayout="row gap">
+<div fxLayout="row wrap">
 
 	<!-- First div -->
 
@@ -33,6 +33,7 @@
 					</mat-select>
 				</mat-form-field>
 			</div>
+
 			<div>
 				<mat-form-field class="example-chip-list">
 					<mat-label>Tags</mat-label>
@@ -66,14 +67,14 @@
 						<p>Selected File: {{selectedFileName}}</p>
 					</div>
 					<div *ngIf="fileSelected">
-						<button mat-raised-button color="primary" type="submit" (click)="onUpload()"> Upload </button>
+						<button mat-raised-button color="warn" type="submit" (click)="onUpload()"> Upload </button>
 					</div>
 					<br>
 				</label>
 			</div>
 
 			<div>
-				<button type="submit" mat-raised-button color="primary" (click)="saveVideo()" >Save</button>
+				<button type="submit" mat-raised-button color="warn" (click)="saveVideo()" >Save</button>
 			</div>
 
 		</form>
