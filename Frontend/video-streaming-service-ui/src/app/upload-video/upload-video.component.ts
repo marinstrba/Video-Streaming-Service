@@ -17,6 +17,8 @@ export class UploadVideoComponent {
   constructor(private videoService: VideoService, private router: Router) {
   }
 
+  // This function takes a file from FileDropEntry
+
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
     for (const droppedFile of files) {
@@ -25,13 +27,9 @@ export class UploadVideoComponent {
       if (droppedFile.fileEntry.isFile) {
         this.fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         this.fileEntry.file((file: File) => {
-
           // Here you can access the real file
           console.log(droppedFile.relativePath, file);
-
-
           this.fileUploaded = true;
-
         });
       } else {
         // It was a directory (empty directories are added, otherwise only files)
@@ -49,6 +47,7 @@ export class UploadVideoComponent {
     console.log(event);
   }
 
+	// This function is called when user clicks on Upload Video button.
    uploadVideo()
    {
     if (this.fileEntry !== undefined)
@@ -57,7 +56,6 @@ export class UploadVideoComponent {
       this.fileEntry.file(file => {
 
         this.videoService.uploadVideo(file).subscribe(data => {
-              data.videoId;
               this.router.navigateByUrl("/save-video-details/" + data.videoId);
               })
 

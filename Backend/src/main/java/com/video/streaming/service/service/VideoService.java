@@ -48,6 +48,14 @@ public class VideoService {
         return thumbnailURL;
     }
 
+    /**
+     * This method takes in a @RequestBody parameter and converts it
+     * to Video object and saves it to the database.
+     *
+     * @param videoDTO Is a Data Transfer Object for video metadata which holds key values.
+     * @return a Data Transfer Object of video.
+     */
+
     public VideoDTO editVideo(VideoDTO videoDTO)
     {
         var savedVideo = getVideoById(videoDTO.getId());
@@ -148,7 +156,7 @@ public class VideoService {
     private Video getVideoById(String videoId)
     {
         return videoRepository.findById(videoId)
-                .orElseThrow(() -> new IllegalArgumentException("Cannot find video by Id."));
+                .orElseThrow(() -> new IllegalArgumentException("Cannot find video by Id. -> " + videoId));
     }
 
     public void addComment(String videoId, CommentDTO commentDTO) {

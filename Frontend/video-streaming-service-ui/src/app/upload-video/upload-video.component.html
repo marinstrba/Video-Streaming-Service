@@ -2,7 +2,7 @@
   <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
                  (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
     <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-      Drag and drop videos.
+      Drag and drop videos (or).
       <button type="button" (click)="openFileSelector()">Browse Files</button>
     </ng-template>
   </ngx-file-drop>
@@ -20,5 +20,5 @@
       </tbody>
     </table>
   </div>
-  <button mat-button (click)="uploadVideo()" *ngIf="fileUploaded">Upload Video</button>
+  <button mat-button *ngIf="fileUploaded" (click)="uploadVideo()" >Upload Video</button>
 </div>
