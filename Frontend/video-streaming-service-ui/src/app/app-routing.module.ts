@@ -1,4 +1,4 @@
-import { CallbackComponent } from './featured/callback.component';
+import { CallbackComponent } from './callback/callback.component';
 import { FeaturedComponent } from './featured/featured.component';
 import { HistoryComponent } from './history/history.component';
 import { HomeComponent } from './home/home.component';

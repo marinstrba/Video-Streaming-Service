@@ -73,10 +73,10 @@ export class VideoDetailComponent {
 
     		let userId = this.userService.getUserId();
     		this.userService.unSubscribeToUser(userId).subscribe(data => {
-    			this.showUnSubscribeButton = true;
-    			this.showSubscribeButton = false;
+    			this.showUnSubscribeButton = false;
+    			this.showSubscribeButton = true;
     		});
 
-    	}
+    }
 
 }

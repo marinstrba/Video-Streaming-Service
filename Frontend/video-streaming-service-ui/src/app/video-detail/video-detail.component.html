@@ -34,12 +34,14 @@
 			<mat-card-header>
 				<mat-card-title>Programming Techie</mat-card-title>
 				<mat-card-subtitle class="subtitles">4.2K Subscribers</mat-card-subtitle>
-				<button (click)="subscribeToUser()" class="subscribe-button" mat-raised-button color="warn">
+				<button *ngIf="showSubscribeButton" (click)="subscribeToUser()" class="subscribe-button" mat-raised-button color="warn">
 					SUBSCRIBE
 				</button>
 
-				<button class="subscribe-button-clicked" mat-raised-button color="accent">
-					SUBSCRIBED
+				<button *ngIf="showUnSubscribeButton" class="subscribe-button-clicked"
+						mat-raised-button color="accent"
+						(click)="unSubscribeToUser">
+					UNSUBSCRIBE
 				</button>
 			</mat-card-header>
 

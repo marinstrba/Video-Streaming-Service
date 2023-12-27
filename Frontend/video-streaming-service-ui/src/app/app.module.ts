@@ -40,6 +40,7 @@ import { VideoCardComponent } from './video-card/video-card.component';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { CallbackComponent } from './callback/callback.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CallbackComponent } from './callback/callback.component';
 	VideoCardComponent,
 	VideoDetailComponent,
 	VideoPlayerComponent,
- CallbackComponent
+ CallbackComponent,
+ CommentsComponent
   ],
   imports: [
      AppRoutingModule,
