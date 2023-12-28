@@ -17,22 +17,23 @@
 
 ## 🧐 About
 
-This application recreates basic functionality of a YouTube application.
-When user starts the application he will see a home screen of videos.
-(picture)
-He can then of course watch this video. With full experience.
-User can subscribe to the author of the video. Like (or dislike) this video and leave a comment.
-(picture)
-Before that he must login into the application.
-(picture)
-After watching a few videos user can look into his video history as well to his liked videos or check users he is subscribed to.
-(picture)
+This application recreates basic functionality of a YouTube application.  
+When user starts the application he will see a home screen of videos.    
+
+(picture)  
+He can then of course watch this video. With full experience.  
+User can subscribe to the author of the video. Like (or dislike) this video and leave a comment.  
+(picture)  
+Before that he must login into the application.  
+(picture)  
+After watching a few videos user can look into his video history as well to his liked videos or check users he is subscribed to.  
+(picture)  
 
 ## 🏗️ Architecture
 
 This is a high level diagram of my application
 
-![VSS(2).png](..%2FDownloads%2FVSS%282%29.png)
+![diagram.png](diagram.png)
 
 User interacts with the frontend part which sends and receives request from Spring REST API.
 The Server side communicates with database (it saves metadata there) and saves the actual images and videos to cloud.
