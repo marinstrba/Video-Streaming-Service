@@ -171,6 +171,13 @@ public class VideoService {
                 .orElseThrow(() -> new IllegalArgumentException("Cannot find video by Id. -> " + videoId));
     }
 
+    private CommentDTO mapToCommentDto(Comment comment) {
+        var commentDTO = new CommentDTO();
+        commentDTO.setCommentText(comment.getText());
+        commentDTO.setAuthorId(comment.getAuthorId());
+        return commentDTO;
+    }
+
     public List<CommentDTO> getAllComments(String videoId) {
         var video = getVideoById(videoId);
         List<Comment> commentList = video.getCommentList();
@@ -187,13 +194,6 @@ public class VideoService {
         comment.setAuthorId(commentDTO.getAuthorId());
         video.addComment(comment);
         videoRepository.save(video);
-    }
-
-    private CommentDTO mapToCommentDto(Comment comment) {
-        var commentDTO = new CommentDTO();
-        commentDTO.setCommentText(comment.getText());
-        commentDTO.setAuthorId(comment.getAuthorId());
-        return commentDTO;
     }
 
     public List<VideoDTO> getAllVideos() {
