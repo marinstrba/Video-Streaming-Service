@@ -141,6 +141,13 @@ public class VideoService {
 
     }
 
+    /**
+     * This maps a video by its Id and returns a Video Transfer Object
+     *
+     * @param videoById Id of a video
+     * @return Video Transfer Object
+     */
+
     private static VideoDTO mapToVideoDTO(Video videoById) {
         VideoDTO videoDTO = new VideoDTO();
 
@@ -164,15 +171,6 @@ public class VideoService {
                 .orElseThrow(() -> new IllegalArgumentException("Cannot find video by Id. -> " + videoId));
     }
 
-    public void addComment(String videoId, CommentDTO commentDTO) {
-        var video = getVideoById(videoId);
-        Comment comment = new Comment();
-        comment.setText(commentDTO.getCommentText());
-        comment.setAuthorId(commentDTO.getAuthorId());
-        video.addComment(comment);
-        videoRepository.save(video);
-    }
-
     public List<CommentDTO> getAllComments(String videoId) {
         var video = getVideoById(videoId);
         List<Comment> commentList = video.getCommentList();
@@ -180,6 +178,15 @@ public class VideoService {
         return commentList.stream()
                 .map(this::mapToCommentDto)
                 .toList();
+    }
+
+    public void addComment(String videoId, CommentDTO commentDTO) {
+        var video = getVideoById(videoId);
+        Comment comment = new Comment();
+        comment.setText(commentDTO.getCommentText());
+        comment.setAuthorId(commentDTO.getAuthorId());
+        video.addComment(comment);
+        videoRepository.save(video);
     }
 
     private CommentDTO mapToCommentDto(Comment comment) {

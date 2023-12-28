@@ -21,8 +21,18 @@ import com.video.streaming.service.model.User;
 public class UserRegistrationService {
 
     @Value("${auth0.userinfoEndpoint}")
-    private String userInfoEndpoint;
+    private final String userInfoEndpoint;
     private final UserRepository userRepository;
+
+    /**
+     *
+     * This function makes a call to user info endpoint
+     * It then retrieves the data in form of a JSON
+     * maps it to user and saves to the database
+     *
+     * @param tokenValue the JWToken of a current user
+     * @return the Id of a current user/ newly registered user
+     */
 
     public String registerUser(String tokenValue) {
         //make a call to user info endpoint

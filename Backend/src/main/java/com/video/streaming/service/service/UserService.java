@@ -63,6 +63,14 @@ public class UserService {
         userRepository.save(currentUser);
     }
 
+    /**
+     * We retrieve the current user and add him to the subscribed to user set
+     * then we have to retrieve the user which current user just subscribed to
+     * and add current user to his subscribers.
+     *
+     * @param userId
+     */
+
     public void subscribeUser(String userId) {
         var currentUser = getCurrentUser();
         currentUser.addToSubscribedToUsers(userId);
