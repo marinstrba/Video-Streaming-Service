@@ -33,7 +33,7 @@ After watching a few videos user can look into his video history as well to his 
 
 This is a high level diagram of my application
 
-![diagram.png](pictures/diagram.png)
+![diagram.png](Frontend/video-streaming-service-ui/src/assets/pictures/diagram.png)
 
 User interacts with the frontend part which sends and receives request from Spring REST API.
 The Server side communicates with database (it saves metadata there) and saves the actual images and videos to cloud.
@@ -42,11 +42,11 @@ Also user authentication is implemented from the frontend and backend.
 ## 🗃️ Database
 
 User model:  
-![user_model.png](pictures/user_model.png)  
+![user_model.png](Frontend/video-streaming-service-ui/src/assets/pictures/user_model.png)  
 Video model:  
-![video_model.png](pictures/video_model.png)
+![video_model.png](Frontend/video-streaming-service-ui/src/assets/pictures/video_model.png)
 Comment model:  
-![comment_model.png](pictures/comment_model.png)
+![comment_model.png](Frontend/video-streaming-service-ui/src/assets/pictures/comment_model.png)
 
 ## ⛏️ Built Using
 -   ![Angular](https://img.shields.io/badge/Angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)

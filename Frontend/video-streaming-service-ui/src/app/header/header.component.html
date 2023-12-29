@@ -2,21 +2,20 @@
   <mat-toolbar-row>
 
 	  <!-- Youtube sign  -->
-
-	  	<span routerLink="/feature" >YOUTUBE</span>
+		<div class="left-section">
+			<span routerLink="/feature" >YOUTUBE</span>
+		</div>
 
 	  <!-- Searchbar section -->
 
 	  <div class="middle-section">
 		  <input class="searchbar" type="textbox" placeholder="Search">
 		  <button class="search-button">
-			  <img class="search-icon" src="header/search.svg">
-			  <div class="tooltip" >Search</div>
+			  <img class="search-icon" src="../../assets/header/search.svg">
 		  </button>
 
 		  <button class="microphone-button">
-			  <img class="microphone" src="header/voice-search-icon.svg">
-			  <div class="tooltip" >Search with your voice</div>
+			  <img class="microphone" src="../../assets/header/voice-search-icon.svg">
 		  </button>
 
 	  </div>
@@ -30,12 +29,21 @@
 					aria-label="Example icon-button with heart icon">
 			  <mat-icon>video_call</mat-icon>
 			</button>
+
+			<button mat-icon-button
+					(click)="toggleDarkMode()">
+				<mat-icon>{{ isDarkMode ? 'brightness_7' : 'brightness_3' }}</mat-icon>
+			</button>
+
+
 			<button *ngIf="isAuthenticated; else noAuth"
 					[matMenuTriggerFor]="menu"
 					mat-icon-button class="example-icon"
 					aria-label="Example icon-button with share icon">
 			  <mat-icon>account_circle</mat-icon>
+
 			</button>
+
 			  <mat-menu #menu="matMenu">
 				  <button mat-menu-item (click)="logout()" >Logout</button>
 			  </mat-menu>

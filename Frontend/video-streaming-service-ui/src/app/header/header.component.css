@@ -54,34 +54,6 @@ mat-toolbar-row {
 
 }
 
-
-.search-button .tooltip,
-.microphone-button .tooltip
-{
-  position: absolute;
-  background-color: gray;
-  color: white;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 8px;
-  padding-right: 8px;
-  font-size: 10px;
-  bottom: -30px;
-  right: 5px;
-  opacity: 0;
-  transition: opacity 0.16s;
-
-  pointer-events: none;
-  white-space: nowrap;
-}
-
-.upload-icon-container:hover .tooltip,
-.search-button:hover .tooltip,
-.microphone-button:hover .tooltip
-{
-  opacity: 1;
-}
-
 .microphone-button
 {
   height: 40px;

@@ -1,9 +1,26 @@
 .example-card {
   max-width: 400px;
-  width: 300px;
+  height: 350px; /* Example fixed height */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* This will prevent content from overflowing */
 }
 
+img[mat-card-image] {
+  width: 100%; /* Make image span the full width of the card */
+  height: 200px; /* Fixed height for images */
+  object-fit: cover; /* This will cover the area without distorting the image */
+}
+
+
 .example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-image: url('https://yt3.ggpht.com/ytc/AAUvwnjuYQrnTYr-sXVEBvCAmtT4nxF-3yhh5KnP0W6xmQ=s176-c-k-c0x00ffffff-no-rj');
   background-size: cover;
+}
+.subtitles{
+  justify-content: space-between;
+}
+
+mat-card[ng-reflect-router-link] {
+  cursor: pointer;
 }

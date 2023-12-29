@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OidcSecurityService } from "angular-auth-oidc-client";
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import { OidcSecurityService } from "angular-auth-oidc-client";
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private oidcSecurityService: OidcSecurityService) {}
+  constructor(private oidcSecurityService: OidcSecurityService,
+  				private themeService: ThemeService) {}
 
 	isAuthenticated: boolean = false;
 
@@ -28,5 +30,13 @@ export class HeaderComponent implements OnInit {
           .logoff()
           .subscribe((result) => console.log(result));
           this.oidcSecurityService.logoffLocal();
+      }
+
+      toggleDarkMode(){
+      	this.themeService.toggleDarkMode();
+      }
+
+      get isDarkMode(): boolean {
+      	return this.themeService.isDarkModeEnabled();
       }
 }

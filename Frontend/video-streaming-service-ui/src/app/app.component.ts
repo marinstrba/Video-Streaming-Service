@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OidcSecurityService, LoginResponse } from "angular-auth-oidc-client";
+import { ThemeService } from './theme.service';
+
 
 @Component({
   selector: 'app-root',
@@ -20,5 +22,7 @@ export class AppComponent implements OnInit {
               console.log("APP IS AUTHENTICATED!!!", isAuthenticated);
           });
   }
+
+
 
 }
