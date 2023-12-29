@@ -1,25 +1,49 @@
 <mat-toolbar color="warn">
   <mat-toolbar-row>
-    <span>YOUTUBE</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button
-			routerLink="/upload-video"
-			class="example-icon favorite-icon"
-			aria-label="Example icon-button with heart icon">
-      <mat-icon>video_call</mat-icon>
-    </button>
-    <button *ngIf="isAuthenticated; else noAuth"
-			[matMenuTriggerFor]="menu"
-			mat-icon-button class="example-icon"
-			aria-label="Example icon-button with share icon">
-      <mat-icon>account_circle</mat-icon>
-    </button>
-	  <mat-menu #menu="matMenu">
-		  <button mat-menu-item (click)="logout()" >Logout</button>
-	  </mat-menu>
-	  <ng-template #noAuth>
-		  <button mat-raised-button (click)="login()">Login</button>
-	  </ng-template>
+
+	  <!-- Youtube sign  -->
+
+	  	<span routerLink="/feature" >YOUTUBE</span>
+
+	  <!-- Searchbar section -->
+
+	  <div class="middle-section">
+		  <input class="searchbar" type="textbox" placeholder="Search">
+		  <button class="search-button">
+			  <img class="search-icon" src="header/search.svg">
+			  <div class="tooltip" >Search</div>
+		  </button>
+
+		  <button class="microphone-button">
+			  <img class="microphone" src="header/voice-search-icon.svg">
+			  <div class="tooltip" >Search with your voice</div>
+		  </button>
+
+	  </div>
+
+
+	  <!-- User section -->
+		<div>
+			<button mat-icon-button
+					routerLink="/upload-video"
+					class="example-icon favorite-icon"
+					aria-label="Example icon-button with heart icon">
+			  <mat-icon>video_call</mat-icon>
+			</button>
+			<button *ngIf="isAuthenticated; else noAuth"
+					[matMenuTriggerFor]="menu"
+					mat-icon-button class="example-icon"
+					aria-label="Example icon-button with share icon">
+			  <mat-icon>account_circle</mat-icon>
+			</button>
+			  <mat-menu #menu="matMenu">
+				  <button mat-menu-item (click)="logout()" >Logout</button>
+			  </mat-menu>
+			  <ng-template #noAuth>
+				  <button mat-raised-button (click)="login()">Login</button>
+			  </ng-template>
+		</div>
   </mat-toolbar-row>
+
 </mat-toolbar>
 

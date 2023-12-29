@@ -76,5 +76,13 @@ public class VideoController {
         return videoService.getAllVideos();
     }
 
+    @GetMapping(value = "/get-liked-videos")
+    @ResponseStatus(HttpStatus.OK)
+    public List<VideoDTO> getLikedVideos(){ return videoService.getLikedVideos(); }
+
+    @GetMapping(value = "/get-video-history")
+    @ResponseStatus(HttpStatus.OK)
+    public List<VideoDTO> getVideoHistory(){ return videoService.getVideoHistory(); }
+
 
 }

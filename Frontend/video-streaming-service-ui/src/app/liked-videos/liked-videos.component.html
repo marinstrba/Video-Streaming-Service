@@ -2,7 +2,7 @@
 	<h3>Liked Videos</h3>
 </div>
 <div fxLayout="row wrap" fxLayoutGap="12px grid">
-	<div fxFlex="30%" *ngFor="let featuredVideo of featuredVideos" >
-		<app-video-card [video]="featuredVideo"></app-video-card>
+	<div fxFlex="30%" *ngFor="let likedVideos of likedVideos" >
+		<app-video-card [video]="likedVideos"></app-video-card>
 	</div>
 </div>

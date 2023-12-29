@@ -1,5 +1,6 @@
 package com.video.streaming.service.controller;
 
+import com.video.streaming.service.DTO.VideoDTO;
 import com.video.streaming.service.service.UserRegistrationService;
 import com.video.streaming.service.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.Authentication;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController

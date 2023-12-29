@@ -21,7 +21,8 @@ import com.video.streaming.service.model.User;
 public class UserRegistrationService {
 
     @Value("${auth0.userinfoEndpoint}")
-    private final String userInfoEndpoint;
+    private String userInfoEndpoint;
+
     private final UserRepository userRepository;
 
     /**

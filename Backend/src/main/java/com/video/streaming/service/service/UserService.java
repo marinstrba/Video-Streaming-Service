@@ -1,5 +1,6 @@
 package com.video.streaming.service.service;
 
+import com.video.streaming.service.DTO.VideoDTO;
 import com.video.streaming.service.model.Video;
 import com.video.streaming.service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -8,6 +9,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import com.video.streaming.service.model.User;
 
+import java.util.List;
 import java.util.Set;
 
 @Service

@@ -4,9 +4,12 @@ import com.video.streaming.service.DTO.CommentDTO;
 import com.video.streaming.service.DTO.UploadVideoResponse;
 import com.video.streaming.service.DTO.VideoDTO;
 import com.video.streaming.service.model.Comment;
+import com.video.streaming.service.model.User;
 import com.video.streaming.service.model.Video;
+import com.video.streaming.service.repository.UserRepository;
 import com.video.streaming.service.repository.VideoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
@@ -198,5 +201,17 @@ public class VideoService {
 
     public List<VideoDTO> getAllVideos() {
         return videoRepository.findAll().stream().map(VideoService::mapToVideoDTO).toList();
+    }
+
+
+    public List<VideoDTO> getLikedVideos() {
+
+        return userService.getCurrentUser()
+                .getLikedVideos()
+                .stream().map(videoId -> mapToVideoDTO(getVideoById(videoId))).toList();
+    }
+
+    public List<VideoDTO> getVideoHistory() {
+        return userService.getCurrentUser().getVideoHistory().stream().map(videoId -> mapToVideoDTO(getVideoById(videoId))).toList();
     }
 }

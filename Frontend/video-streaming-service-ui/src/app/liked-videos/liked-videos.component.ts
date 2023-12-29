@@ -9,12 +9,12 @@ import { VideoDTO } from '../video-dto';
 })
 export class LikedVideosComponent implements OnInit {
 
-	featuredVideos: Array<VideoDTO> = [];
+	likedVideos: Array<VideoDTO> = [];
 	constructor(private videoService: VideoService) {}
 
 	ngOnInit(): void {
-		this.videoService.getAllVideos().subscribe(videos => {
-			this.featuredVideos = videos;
+		this.videoService.getLikedVideos().subscribe(videos => {
+			this.likedVideos = videos;
 		});
 	}
 
