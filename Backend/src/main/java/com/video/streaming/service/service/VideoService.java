@@ -4,12 +4,9 @@ import com.video.streaming.service.DTO.CommentDTO;
 import com.video.streaming.service.DTO.UploadVideoResponse;
 import com.video.streaming.service.DTO.VideoDTO;
 import com.video.streaming.service.model.Comment;
-import com.video.streaming.service.model.User;
 import com.video.streaming.service.model.Video;
-import com.video.streaming.service.repository.UserRepository;
 import com.video.streaming.service.repository.VideoRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
@@ -145,7 +142,7 @@ public class VideoService {
     }
 
     /**
-     * This maps a video by its Id and returns a Video Transfer Object
+     * This maps a video by its id and returns a Video Transfer Object
      *
      * @param videoById Id of a video
      * @return Video Transfer Object

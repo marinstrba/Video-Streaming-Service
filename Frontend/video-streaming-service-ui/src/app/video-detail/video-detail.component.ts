@@ -1,14 +1,16 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { VideoService } from '../video.service';
 import { UserService } from '../user.service';
+import { VideoDTO } from '../video-dto';
+
 
 @Component({
   selector: 'app-video-detail',
   templateUrl: './video-detail.component.html',
   styleUrls: ['./video-detail.component.css']
 })
-export class VideoDetailComponent {
+export class VideoDetailComponent implements OnInit {
 
 	videoId!: string;
 	videoUrl!: string;
@@ -21,6 +23,7 @@ export class VideoDetailComponent {
 	viewCount: number = 0;
 	showSubscribeButton: boolean = true;
 	showUnSubscribeButton: boolean = false;
+	suggestedVideos: Array<VideoDTO> = [];
 
 
 
@@ -40,6 +43,13 @@ export class VideoDetailComponent {
 	   })
 
 	}
+
+	ngOnInit(): void {
+		this.videoService.getAllVideos().subscribe(videos => {
+			this.suggestedVideos = videos;
+		});
+	}
+
 
 	likeVideo() {
 		this.videoService.likeVideo(this.videoId).subscribe(data =>
@@ -78,5 +88,6 @@ export class VideoDetailComponent {
     		});
 
     }
+
 
 }

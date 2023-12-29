@@ -27,3 +27,15 @@ body {
   background-color: #1E1E1E;
   color: white;
 }
+
+.dark-mode mat-card-subtitle {
+	color: #d3d3d3;
+}
+
+.dark-mode mat-card {
+	background-color: #a9a9a9;
+}
+
+.dark-mode .header {
+    color: white;
+}

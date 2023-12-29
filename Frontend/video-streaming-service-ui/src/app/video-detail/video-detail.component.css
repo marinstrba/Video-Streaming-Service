@@ -52,3 +52,34 @@ mat-card[ng-reflect-router-link] {
 .like-dislike-section {
   padding-right: 10px;
 }
+.suggestion-bar .suggested-video {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.suggestion-bar .suggested-thumbnail {
+    width: 80px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+.suggestion-bar .suggested-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.suggestion-bar .suggested-views {
+    font-size: 12px;
+}
+
+.header {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; /* Dark gray text color */
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ddd; /* Light gray bottom border */
+    text-align: left;
+}
+

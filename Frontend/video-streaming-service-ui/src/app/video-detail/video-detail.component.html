@@ -50,8 +50,8 @@
 			<div>{{videoDescription}}</div>
 			<mat-divider></mat-divider>
 			<mat-chip-grid>
-				<mat-chip>Spring Boot</mat-chip>
-				<mat-chip>Angular</mat-chip>
+				<mat-chip>Sun</mat-chip>
+				<mat-chip>Sunset</mat-chip>
 			</mat-chip-grid>
 			<mat-divider></mat-divider>
 
@@ -63,5 +63,10 @@
 	</div>
 	<div fxFlex="5%"></div>
 	<div fxFlex="30%" class="suggestion-bar">
+		<div class="header" >Suggested videos</div>
+		<div class="suggested-video" *ngFor="let video of suggestedVideos">
+			<img src="{{video.thumbnailUrl}}" alt="{{video.title}}" class="suggested-thumbnail">
+			<div class="suggested-title">{{video.title}}</div>
+		</div>
 	</div>
 </div>

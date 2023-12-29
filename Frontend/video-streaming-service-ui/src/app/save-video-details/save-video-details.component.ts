@@ -10,6 +10,8 @@
     import { MatSnackBar } from '@angular/material/snack-bar';
     import { VideoDTO } from '../video-dto';
     import { VideoService } from '../video.service';
+    import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -40,7 +42,7 @@ export class SaveVideoDetailsComponent {
 		// Assigning variables in constructor and injecting dependencies
 
 	   constructor(private activatedRoute: ActivatedRoute, private videoService: VideoService,
-	   private matSnackBar: MatSnackBar) {
+	   private matSnackBar: MatSnackBar, private router: Router) {
 
 	   // Getting the videoId from URL
 
@@ -118,6 +120,7 @@ export class SaveVideoDetailsComponent {
 
 			this.videoService.saveVideo(videoMetadata).subscribe(data => {
 				this.matSnackBar.open("Video Metadata updated successfully!", "OK");
+				this.router.navigateByUrl('/feature');
 			});
 	}
 }

@@ -20,14 +20,27 @@
 This application recreates basic functionality of a YouTube application.  
 When user starts the application he will see a home screen of videos.    
 
-(picture)  
+![home.png](Frontend/video-streaming-service-ui/src/assets/pictures/home.png)
+
 He can then of course watch this video. With full experience.  
 User can subscribe to the author of the video. Like (or dislike) this video and leave a comment.  
-(picture)  
+
+![video-details.png](Frontend/video-streaming-service-ui/src/assets/pictures/video-details.png)
+
 Before that he must login into the application.  
-(picture)  
+
+![auth0.png](Frontend/video-streaming-service-ui/src/assets/pictures/auth0.png)
+
 After watching a few videos user can look into his video history as well to his liked videos or check users he is subscribed to.  
-(picture)  
+
+![liked.png](Frontend/video-streaming-service-ui/src/assets/pictures/liked.png)
+
+And if the user also wants to share his own videos he can do so.
+
+![liked.png](Frontend/video-streaming-service-ui/src/assets/pictures/upload-video.png)
+![liked.png](Frontend/video-streaming-service-ui/src/assets/pictures/save-video-details.png)
+
+
 
 ## 🏗️ Architecture
 

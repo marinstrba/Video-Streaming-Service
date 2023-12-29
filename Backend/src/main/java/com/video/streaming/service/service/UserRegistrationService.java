@@ -36,6 +36,10 @@ public class UserRegistrationService {
      */
 
     public String registerUser(String tokenValue) {
+
+
+        System.out.println("\n\n\n\n WTF \n\n\n\n");
+
         //make a call to user info endpoint
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
