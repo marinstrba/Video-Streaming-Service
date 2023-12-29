@@ -1,4 +1,6 @@
-	<mat-sidenav [mode]="'side'" opened>
+	<mat-sidenav [mode]="'side'"
+				 opened
+				 [class.dark-mode]="themeService.isDarkModeEnabled()">
 		<mat-nav-list role="list">
 
 			<mat-list-item role="listitem" routerLink="/feature" fxLayout="row gap">

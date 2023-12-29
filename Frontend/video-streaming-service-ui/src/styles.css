@@ -8,3 +8,22 @@ body {
 	background-color: #1E1E1E;
 	color: white;
 }
+
+.dark-mode mat-sidenav {
+  background-color: #1E1E1E;
+  color: white;
+}
+.dark-mode mat-sidenav p,
+.dark-mode mat-sidenav mat-icon {
+  color: white;
+}
+
+.dark-mode mat-sidenav-container {
+  background-color: #1E1E1E;
+  color: white;
+}
+
+.dark-mode mat-sidenav-container .sidenav-content {
+  background-color: #1E1E1E;
+  color: white;
+}

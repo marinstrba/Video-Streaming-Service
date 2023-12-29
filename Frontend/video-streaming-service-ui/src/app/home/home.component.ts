@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { ThemeService } from '../theme.service'
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,8 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-	constructor(private router: Router){
+	constructor(private router: Router,
+				public themeService: ThemeService){
 		this.router.navigateByUrl('/feature');
 	}
 	ngOnInit(): void {
