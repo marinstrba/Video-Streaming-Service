@@ -14,6 +14,21 @@
     <br> 
 </p>
 
+## 🚫⚠️ Disclaimer
+
+To run this application, you can download Docker and execute it. However, please note that you need to set up your own AWS Cloud credentials and Auth0 configuration. This is necessary for the application to function correctly.
+
+You will need to provide the following:
+### AWS Cloud Credentials
+- AWS_ACCESS_KEY_ID: Your AWS access key ID.  
+- AWS_SECRET_ACCESS_KEY: Your AWS secret access key.  
+
+### Auth0 Configuration  
+
+- AUTH0_USERINFOENDPOINT: The endpoint URL for Auth0 user information.  
+- SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUER_URI: The issuer URI for JWT tokens from Auth0.  
+
+These settings are required for the application's authentication and authorization.
 
 ## 🧐 About
 
