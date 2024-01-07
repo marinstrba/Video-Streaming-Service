@@ -2,7 +2,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: .  # Set context to the project root directory
+      context: .  
       dockerfile: Backend/Dockerfile
     ports:
       - "8080:8080"
