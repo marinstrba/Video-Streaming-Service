@@ -13,13 +13,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StorageConfig {
 
-    @Value("${cloud.aws.credentials.access-key}")
+    @Value("${AWS_ACCESS_KEY_ID}")
     private String accessKey;
 
-    @Value("${cloud.aws.credentials.secret-key}")
+    @Value("${AWS_SECRET_ACCESS_KEY}")
     private String accessSecret;
 
-    @Value("${cloud.aws.region.static}")
+    @Value("${AWS_REGION}")
     private String region;
 
 
