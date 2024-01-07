@@ -1,0 +1,11 @@
+version: '3'
+services:
+  Backend:
+    build: ./Backend
+    ports:
+      - "8080:8080"
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+
